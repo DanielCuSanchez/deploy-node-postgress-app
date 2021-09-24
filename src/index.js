@@ -1,8 +1,10 @@
 import app from './app';
 
-async function main() {
-	await app.listen(3001);
-	console.log('http://localhost:3001/');
+function main() {
+	const port = process.env.PORT || 3001;
+	app.listen(port, () => {
+		console.log(`Listening on http://localhost:${port}/`);
+	});
 }
 
 main();

@@ -4,8 +4,11 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "node dist/index.js",
-		"build": "babel src/ --out-dir dist",
+		"start": "npm run build && node dist/index.js",
+		"build": "npm run clean && npm run babel-build && npm run cp-cert",
+		"cp-cert": "cp ./src/database/ca-certificate.crt ./dist/database/ca-certificate.crt",
+		"babel-build": "babel -d ./dist ./src -s",
+		"clean": "rm -rf ./dist && mkdir dist",
 		"dev": "nodemon src/index.js --exec babel-node"
 	},
 	"keywords": [],

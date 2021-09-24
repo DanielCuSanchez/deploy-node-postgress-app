@@ -26,8 +26,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 
 //Routes views
+// app.get('/', (req, res) => {
+// 	res.render('pages/home');
+// });
+
 app.get('/', (req, res) => {
-	res.render('pages/home');
+	res.status(200).send('Hello world');
 });
 
 app.use('/users', userRoutesViews);
